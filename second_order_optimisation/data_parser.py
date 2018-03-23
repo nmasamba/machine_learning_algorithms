@@ -1,7 +1,7 @@
 
 import pandas as pd #To load in the data
 
-def get_data(path='cal_data.csv', cols = ['dist_cycled','calories'], n_rows = 1000):
+def get_data(path='data.csv', cols = ['dist_cycled','calories'], n_rows = 1000):
     df = pd.read_csv(path) #Reads in the CSV file specified
     df = df[cols] #Gets only the specified columns
     df.fillna(0, inplace = True) #Replaces missing values with 0.
