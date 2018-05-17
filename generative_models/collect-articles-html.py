@@ -4,6 +4,15 @@ import sys
 import requests
 from lxml import html
 
+'''
+Plug different keywords into the &subject= placeholder in the nature URL:
+https://www.nature.com/search?article_type=protocols,research,reviews&subject=biotechnology&page=3
+
+The script goes through the first eight pages of search results. Each search result page's html is loaded into an html parser (lxml) and the link and title for all 25 articles on the results page is accessed through the xpath for the respective html elements. The article links gathered are followed and the raw page html for the research paper document is saved in a database (mysql) along with the articles' title, date, etc.
+
+During experiments, the script was ran repeatedly across 32 different searchable keywords and in a few hours pulled down over 3000 research papers.
+'''
+
 try:
     # connect to mysql instace where html will be stored
     conn = db.connect('localhost','user', 'password', 'db_name')
