@@ -6,6 +6,12 @@ from lxml import html
 from bs4 import BeautifulSoup as bs
 import re
 
+'''
+Pulls the raw html from the db for every article downloaded. Used the BeautifulSoup4 library to removal all the html tags and then with just the page text leftover it was as easy as telling Python to only keep the text after the "Abstract" substring and before the "References" substring. Additional text preprocessing was done in this script, removing all special characters, numbers, and excess whitespace.
+
+The article text data was dumped out of mysql and into a sqlite database file for this notebook to pull its data from. The sqlite db is over 100MB so it couldn't be uploaded directly to github. To access its contents, you'll need to unzip the article_db.zip file in this directory.
+'''
+
 try:
     # connect to mysql instance 
     conn = db.connect('localhost','user', 'password', 'db_name')
